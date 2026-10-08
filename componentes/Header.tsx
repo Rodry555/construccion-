@@ -1,5 +1,5 @@
-export default function Navegacion(){
 
+export default function Navegacion(){
     return (
         <nav>
             <a href="">home</a>
@@ -8,6 +8,5 @@ export default function Navegacion(){
             <a href="">faqs</a>
             <a href="">consulta</a>
         </nav>
-    )
-    
+    );
 }
