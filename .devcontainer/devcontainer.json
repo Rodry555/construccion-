@@ -6,7 +6,8 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22",
-      "pnpm": true,
+      // ⬅️ CAMBIO npm: antes estaba "pnpm": true (instalaba pnpm global).
+      // Ahora solo Node.js + npm, que es lo que viene con esa feature.
       // Nada de tu stack compila nativo (Prisma/Next traen binarios precompilados,
       // auth usa bcryptjs) → no necesita python/g++ de node-gyp.
       // Si algún día un paquete pide compilación, quitá esta línea.
@@ -14,9 +15,10 @@
     }
   },
 
-  // Caché de pnpm persistente entre rebuilds: reinstalás en segundos
+  // ⬅️ CAMBIO npm: caché persistente de npm (reemplaza la de pnpm) entre
+  // rebuilds: reinstalás en segundos.
   "mounts": [
-    "source=pnpm-store,target=/home/vscode/.local/share/pnpm/store,type=volume"
+    "source=npm-cache,target=/home/vscode/.npm,type=volume"
   ],
 
   "forwardPorts": [3000, 5555],

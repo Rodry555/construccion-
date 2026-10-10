@@ -28,13 +28,15 @@ else
 fi
 
 # 4. Dependencias del proyecto (cuando exista)
+# ⬅️ CAMBIO npm: antes era "pnpm install"
 if [ -f package.json ]; then
-  pnpm install
+  npm install
 fi
 
 # 5. Prisma Client (cuando exista el schema)
+# ⬅️ CAMBIO npm: antes era "pnpm exec prisma generate"
 if [ -f prisma/schema.prisma ]; then
-  pnpm exec prisma generate
+  npx prisma generate
 fi
 
 # 6. Sanity check de secrets
